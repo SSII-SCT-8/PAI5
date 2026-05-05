@@ -1,22 +1,24 @@
 # Matriz de Riesgos
 
-## Probabilidad
+La matriz se usara para priorizar hallazgos del laboratorio Kioptrix Level 1 en el contexto ficticio del Ayuntamiento de Santa Marta. La severidad CVSS se complementara con el contexto del activo, exposicion y facilidad de explotacion.
+
+## Criterios de probabilidad
 
 | Nivel | Criterio |
 |---|---|
-| Baja | Requiere condiciones poco probables, acceso previo significativo o configuracion muy especifica |
-| Media | Puede explotarse con condiciones razonables dentro del entorno evaluado |
-| Alta | Es facilmente reproducible o esta expuesta de forma directa en el activo evaluado |
+| Baja | Requiere condiciones poco probables, acceso previo significativo o informacion no disponible en Black Box |
+| Media | Puede reproducirse con condiciones razonables dentro del laboratorio autorizado |
+| Alta | Es directamente accesible, tiene pasos claros o existe PoC/exploit publico aplicable |
 
-## Impacto
+## Criterios de impacto
 
 | Nivel | Criterio |
 |---|---|
-| Bajo | Afecta informacion limitada o tiene impacto operativo minimo |
-| Medio | Puede afectar confidencialidad, integridad o disponibilidad de forma parcial |
+| Bajo | Impacto limitado, sin compromiso relevante de confidencialidad, integridad o disponibilidad |
+| Medio | Afecta parcialmente a servicios, informacion o configuracion del sistema |
 | Alto | Puede comprometer el sistema, privilegios, datos relevantes o continuidad del servicio |
 
-## Severidad resultante
+## Matriz de severidad
 
 | Probabilidad \ Impacto | Bajo | Medio | Alto |
 |---|---|---|---|
@@ -24,17 +26,23 @@
 | Media | Baja | Media | Alta |
 | Alta | Media | Alta | Critica |
 
-## Criterios de priorizacion
+## Prioridades de correccion
 
-La prioridad se asignara considerando:
+| Prioridad | Criterio | Plazo orientativo |
+|---|---|---|
+| P1 - Inmediata | Severidad critica, explotacion sencilla, presencia en CISA KEV o impacto alto confirmado | Corregir lo antes posible |
+| P2 - Alta | Severidad alta o CVSS elevado con servicio expuesto | Corregir en el corto plazo |
+| P3 - Media | Severidad media o explotabilidad condicionada | Planificar correccion |
+| P4 - Baja | Impacto bajo, baja probabilidad o mitigacion compensatoria suficiente | Corregir cuando sea viable |
 
-- Severidad resultante de la matriz.
-- Puntuacion CVSS cuando exista.
-- Exposicion del servicio afectado.
+## Factores adicionales de priorizacion
+
+- Puntuacion CVSS y vector asociado.
 - Existencia de CVE publico.
 - Presencia en CISA KEV.
-- Facilidad de explotacion dentro del laboratorio.
+- Disponibilidad de exploit en Exploit-DB/SearchSploit.
+- Servicio expuesto en red local.
 - Impacto sobre confidencialidad, integridad y disponibilidad.
-- Existencia de mitigacion directa.
+- Complejidad de mitigacion.
 
-[PENDIENTE: ajustar criterios si el profesor exige una escala concreta.]
+[PENDIENTE: aplicar la matriz a hallazgos reales.]

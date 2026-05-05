@@ -1,150 +1,157 @@
 # Metodologia
 
-La evaluacion seguira NIST SP 800-115, Technical Guide to Information Security Testing and Assessment, adaptada a un entorno academico de laboratorio. El proceso se divide en planificacion, ejecucion y post-ejecucion/reporting.
+La evaluacion seguira NIST SP 800-115, Technical Guide to Information Security Testing and Assessment, como metodologia principal. El enfoque se adapta a un ejercicio academico Red Team / pentesting autorizado sobre el Ayuntamiento de Santa Marta, usando Kali Linux como maquina atacante y Kioptrix Level 1 como objetivo en una red host-only / interna aislada.
+
+No se ejecutara explotacion durante la preparacion documental. Las fases tecnicas se realizaran posteriormente solo dentro del alcance autorizado.
+
+## Fases del proyecto
+
+| Fase | Objetivo | Salida esperada |
+|---|---|---|
+| Planificacion | Definir alcance, autorizacion, roles, entorno y limites | `scope.md`, `equipo.md`, estructura de evidencias |
+| Reconocimiento / fingerprinting | Identificar host, puertos, servicios, versiones y sistema operativo si procede | Evidencias en `evidencias/reconocimiento/` y `evidencias/nmap/` |
+| Identificacion de servicios | Transformar salidas tecnicas en una tabla clara | `anexos/tabla_servicios.md` |
+| Analisis de vulnerabilidades | Relacionar servicios/versiones con vulnerabilidades documentadas | `anexos/tabla_hallazgos.md` y evidencias |
+| Explotacion controlada | Validar impacto de forma limitada y autorizada | Evidencias en `evidencias/explotacion/` |
+| Escalada de privilegios | Evaluar ampliacion de privilegios si procede | Evidencias reproducibles y limitadas |
+| Post-explotacion | Evidenciar impacto sin persistencia ni exfiltracion | Capturas/logs controlados |
+| Reporting | Consolidar resultados, riesgos y mitigaciones | Informe tecnico y anexos |
+| Plan de mitigacion | Proponer medidas correctivas priorizadas | Matriz de riesgos y recomendaciones |
+
+## Herramientas previstas por fase
+
+| Fase | Herramientas |
+|---|---|
+| Reconocimiento | `ip`, `ping`, `nmap` |
+| Fingerprinting | `nmap -O`, `nmap -sV`, `nmap -sC` |
+| Analisis de vulnerabilidades | SearchSploit, Exploit-DB, NVD/CVE, Nikto si hay servicio web |
+| Explotacion controlada | Metasploit si procede, PoC controladas si procede |
+| Escalada | LinPEAS si procede |
+| Documentacion | Markdown, logs de comandos, capturas, tablas de hallazgos |
+
+El uso de herramientas se registrara en `anexos/comandos_ejecutados.md` y cada evidencia se guardara en la carpeta correspondiente.
 
 ## 1. Planificacion
 
-Objetivo: definir el alcance, permisos, activos, restricciones, responsables y criterios de exito antes de ejecutar pruebas.
+Objetivo: cerrar el escenario del Ayuntamiento de Santa Marta, definir el activo Kioptrix Level 1, documentar la red host-only, asignar roles y establecer pruebas permitidas y prohibidas.
 
 Actividades:
 
-- Definir Security Team, roles y responsabilidades.
-- Identificar activos dentro y fuera de alcance.
-- Documentar IP atacante, IP objetivo y tipo de red.
-- Establecer pruebas permitidas y prohibidas.
-- Preparar estructura de evidencias.
-- Acordar formato de reporte y anexos.
+- Definir organizacion ficticia y sistema evaluado.
+- Justificar prueba Black Box.
+- Confirmar Kali Linux como atacante y Kioptrix Level 1 como objetivo.
+- Documentar red host-only / interna aislada.
+- Definir alcance permitido y fuera de alcance.
+- Preparar informe, anexos y estructura de evidencias.
 
-Salida esperada:
+[PENDIENTE: completar IP atacante, IP objetivo y autorizacion del laboratorio.]
 
-- `scope.md` completado.
-- `equipo.md` validado.
-- Carpetas de evidencias preparadas.
+## 2. Reconocimiento / fingerprinting
 
-[PENDIENTE: completar con datos reales del laboratorio.]
+Objetivo: identificar de forma no destructiva la superficie expuesta por Kioptrix Level 1.
 
-## 2. Reconocimiento / Discovery
+Actividades:
 
-Objetivo: identificar si el objetivo esta activo, que puertos expone y que servicios pueden analizarse.
+- Identificar IP atacante y rango de red.
+- Descubrir IP objetivo dentro de la red local.
+- Comprobar host activo.
+- Escanear puertos.
+- Detectar servicios y versiones.
+- Intentar deteccion de sistema operativo si procede.
 
-Actividades permitidas:
-
-- Comprobacion de host activo.
-- Escaneo de puertos comunes.
-- Deteccion de servicios y versiones.
-- Deteccion de sistema operativo cuando proceda.
-- Registro de comandos y evidencias.
-
-Herramientas previstas:
-
-- Nmap para descubrimiento y fingerprinting.
-- Nikto para revision web basica si existe servicio HTTP/HTTPS.
-
-Salida esperada:
-
-- Evidencias en `evidencias/nmap/` y `evidencias/nikto/`.
-- Servicios consolidados en `anexos/tabla_servicios.md`.
+No se usaran opciones agresivas innecesarias ni pruebas destructivas.
 
 [PENDIENTE: completar con resultados reales.]
 
-## 3. Analisis de vulnerabilidades
+## 3. Identificacion de servicios
 
-Objetivo: relacionar servicios y versiones detectadas con vulnerabilidades documentadas y verificables.
+Objetivo: convertir los resultados de Nmap y otras herramientas en una tabla objetiva de servicios.
 
-Actividades:
+La tabla de servicios no debe marcar un servicio como vulnerable sin validacion posterior. Se usaran observaciones como "requiere analisis" cuando proceda.
 
-- Buscar vulnerabilidades asociadas a servicios y versiones.
-- Consultar CVE, NVD, CVSS, CWE y CISA KEV.
-- Priorizar hallazgos segun exposicion, impacto y probabilidad.
-- Evitar concluir vulnerabilidad solo por coincidencia de version sin validacion.
+[PENDIENTE: completar `anexos/tabla_servicios.md` con evidencias reales.]
 
-Salida esperada:
+## 4. Analisis de vulnerabilidades
 
-- Hallazgos candidatos en `anexos/tabla_hallazgos.md`.
-- Evidencias en `evidencias/vulnerabilidades/`.
+Objetivo: relacionar servicios y versiones detectadas con vulnerabilidades publicas verificables.
+
+Fuentes previstas:
+
+- CVE para identificadores publicos de vulnerabilidades.
+- NVD para descripcion, referencias y puntuacion CVSS.
+- CVSS para severidad tecnica.
+- CWE para clasificacion de debilidades.
+- CISA KEV para priorizar vulnerabilidades explotadas en el mundo real.
+- Exploit-DB y SearchSploit para localizar informacion tecnica y PoC conocidas.
+
+No se confirmara ninguna vulnerabilidad solo por coincidencia de version sin evidencia o validacion razonable.
 
 [PENDIENTE: completar con hallazgos reales.]
 
-## 4. Explotacion controlada
+## 5. Explotacion controlada
 
-Objetivo: validar impacto de forma limitada, autorizada y reproducible, sin afectar sistemas externos.
-
-Condiciones:
-
-- Solo se ejecutara si el alcance lo permite.
-- Solo contra la maquina objetivo autorizada.
-- Cada prueba debe tener objetivo, comando, resultado esperado y evidencia.
-- No se permitira persistencia, malware, evasiones ni acciones destructivas.
-
-Salida esperada:
-
-- Evidencias en `evidencias/explotacion/`.
-- Impacto validado o descartado en el informe.
-
-[PENDIENTE: completar solo cuando se ejecuten pruebas reales y autorizadas.]
-
-## 5. Escalada de privilegios
-
-Objetivo: evaluar si una vulnerabilidad validada permite ampliar privilegios dentro del entorno autorizado.
+Objetivo: validar impacto tecnico dentro del laboratorio autorizado, solo cuando el equipo alcance esa fase.
 
 Condiciones:
 
-- Debe partir de una explotacion controlada documentada.
-- No se modificaran configuraciones permanentes salvo que sea imprescindible y autorizado.
-- Se registraran comandos, evidencias y estado final.
+- Solo contra Kioptrix Level 1.
+- Solo dentro de la red host-only / interna aislada.
+- Sin DoS, persistencia, evasion, malware ni acciones destructivas.
+- Cada prueba debe tener comando, resultado esperado, resultado obtenido y evidencia.
 
-Salida esperada:
+[PENDIENTE: completar solo si se ejecutan pruebas reales autorizadas.]
 
-- Evidencias en `evidencias/post-explotacion/` o `evidencias/explotacion/`.
-- Riesgo e impacto documentados.
+## 6. Escalada de privilegios
 
-[PENDIENTE: completar con evidencias reales si aplica.]
+Objetivo: comprobar si un acceso obtenido permite elevar privilegios dentro del sistema objetivo, de forma limitada y documentada.
 
-## 6. Post-explotacion
+Herramientas como LinPEAS podran usarse si procede y si su ejecucion esta dentro del alcance. La finalidad sera documentar impacto, no mantener acceso ni modificar innecesariamente el sistema.
 
-Objetivo: documentar el impacto potencial sin exfiltrar datos sensibles ni mantener acceso.
+[PENDIENTE: completar si aplica.]
+
+## 7. Post-explotacion
+
+Objetivo: documentar impacto potencial sin exfiltracion real ni persistencia.
 
 Actividades permitidas:
 
-- Verificacion minima de privilegios obtenidos.
-- Identificacion de impacto tecnico.
-- Captura de evidencia controlada.
-- Limpieza o restauracion si procede.
+- Verificacion minima de usuario/privilegios.
+- Captura de evidencias controladas.
+- Registro de estado y limpieza si procede.
 
-Actividades prohibidas:
+[PENDIENTE: completar si aplica.]
 
-- Persistencia.
-- Evasion.
-- Movimiento lateral fuera del alcance.
-- Exfiltracion de informacion sensible.
+## 8. Reporting y plan de mitigacion
 
-[PENDIENTE: completar con resultados reales si aplica.]
+Objetivo: consolidar resultados reales, evidencias, riesgo y recomendaciones.
 
-## 7. Reporting
+El informe debe incluir:
 
-Objetivo: consolidar resultados, evidencias, riesgos y mitigaciones en un informe tecnico claro.
+- Alcance y autorizacion.
+- Metodologia aplicada.
+- Evidencias de reconocimiento.
+- Servicios identificados.
+- Hallazgos confirmados.
+- Relacion con CVE/CVSS/CWE y MITRE ATT&CK.
+- Plan de mitigacion priorizado.
+- Limitaciones y conclusiones.
 
-Actividades:
+## Uso de MITRE ATT&CK
 
-- Completar el informe tecnico.
-- Relacionar evidencias con comandos y hallazgos.
-- Asignar severidad y prioridad.
-- Proponer mitigaciones verificables.
-- Revisar consistencia, trazabilidad y ausencia de datos inventados.
+MITRE ATT&CK se usara para contextualizar hallazgos dentro de tacticas y tecnicas reales de adversarios. El mapeo se hara solo cuando exista justificacion basada en evidencias, por ejemplo servicios expuestos, vulnerabilidades confirmadas o acciones reproducidas en laboratorio.
 
-Salida esperada:
+## Criterios de priorizacion de hallazgos
 
-- `informe/Informe_Tecnico_PAI5.md` completado.
-- Anexos completos.
-- ZIP final preparado.
+La prioridad se asignara combinando:
 
-## Uso de fuentes y marcos de referencia
+- Severidad CVSS.
+- Probabilidad e impacto definidos en `anexos/matriz_riesgos.md`.
+- Exposicion del servicio afectado.
+- Existencia de CVE publico.
+- Presencia en CISA KEV.
+- Disponibilidad de exploit o PoC en Exploit-DB/SearchSploit.
+- Facilidad de reproduccion en laboratorio.
+- Impacto sobre confidencialidad, integridad y disponibilidad.
+- Viabilidad de mitigacion.
 
-- MITRE ATT&CK: se usara para mapear tacticas y tecnicas observadas o potencialmente aplicables en el entorno evaluado. No se asignara una tecnica sin evidencia o justificacion.
-- CVE: se usara para identificar vulnerabilidades publicas asociadas a productos o versiones concretas.
-- NVD: se usara como fuente de informacion tecnica, puntuaciones CVSS y referencias.
-- CVSS: se usara para estimar severidad tecnica, complementada con contexto del laboratorio.
-- CWE: se usara para clasificar debilidades subyacentes cuando proceda.
-- CISA KEV: se usara para priorizar vulnerabilidades conocidas explotadas activamente, si alguna aplica al entorno.
-
-[PENDIENTE: completar referencias concretas para cada hallazgo real.]
+[PENDIENTE: aplicar criterios a hallazgos reales.]

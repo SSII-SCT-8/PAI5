@@ -2,23 +2,34 @@
 
 ## Objetivo del proyecto
 
-Este repositorio organiza el entregable del PAI 5 de la asignatura Seguridad en Sistemas Informaticos e Internet: "RedTeamPro: Evaluacion de la seguridad de la informacion mediante pruebas de seguridad de una organizacion publica".
+Este repositorio contiene la documentacion, plantillas, evidencias y scripts seguros del PAI 5 de la asignatura Seguridad en Sistemas Informaticos e Internet: "RedTeamPro: Evaluacion de la seguridad de la informacion mediante pruebas de seguridad de una organizacion publica".
 
-El objetivo es documentar y ejecutar una evaluacion de seguridad autorizada, de tipo Red Team/pentesting, sobre un entorno de laboratorio propio o expresamente autorizado. El trabajo seguira la metodologia NIST SP 800-115, cubriendo planificacion, ejecucion controlada y post-ejecucion/reporting.
+El proyecto consiste en una evaluacion Red Team / pentesting autorizado sobre una organizacion publica ficticia, el Ayuntamiento de Santa Marta. El sistema evaluado sera un servidor de servicios digitales municipales representado en laboratorio por la maquina vulnerable Kioptrix Level 1.
 
-[PENDIENTE: completar con el nombre definitivo del equipo, integrantes y entorno de laboratorio.]
+La finalidad es reproducir de forma academica un ciclo de evaluacion completo: planificacion, reconocimiento, fingerprinting, identificacion de servicios, analisis de vulnerabilidades, explotacion controlada si procede, escalada de privilegios si procede, post-explotacion limitada, reporting y plan de mitigacion.
 
-## Contexto academico
+## Contexto academico y autorizado
 
-Este proyecto tiene finalidad exclusivamente academica. Las pruebas, comandos y evidencias deben limitarse al entorno definido en `scope.md` y no deben ejecutarse contra sistemas externos, redes publicas o activos sin autorizacion.
+Este proyecto es exclusivamente academico. Todas las pruebas se realizaran unicamente en una red local de laboratorio autorizada, aislada mediante red host-only / red interna.
 
-## Advertencia de uso autorizado
+Queda prohibido ejecutar pruebas contra sistemas externos, direcciones IP publicas, servicios reales de terceros o cualquier activo no autorizado. No se debe ejecutar explotacion hasta que el alcance este cerrado, el objetivo sea confirmado y cada accion quede registrada.
 
-El contenido de este repositorio esta destinado unicamente a actividades de evaluacion defensiva y autorizada. No se permite usar estos materiales para atacar, degradar, evadir controles, mantener persistencia, exfiltrar informacion o comprometer sistemas ajenos.
+## Escenario definido
 
-No se debe ejecutar explotacion hasta que el alcance, autorizacion, entorno y responsables esten claramente definidos y aprobados.
+| Elemento | Decision |
+|---|---|
+| Organizacion ficticia | Ayuntamiento de Santa Marta |
+| Sistema evaluado | Servidor de servicios digitales municipales |
+| Tipo de prueba | Black Box |
+| Entorno atacante | Kali Linux en maquina virtual |
+| Sistema objetivo | Kioptrix Level 1 |
+| Fuente del objetivo | VulnHub / Kioptrix |
+| Tipo de red | Host-only / red interna aislada |
+| Metodologia principal | NIST SP 800-115 |
 
-## Estructura de carpetas
+Kioptrix Level 1 se usara porque permite documentar un ciclo completo de evaluacion en laboratorio y es diferente a Metasploitable3, que aparece como sistema ilustrativo en el caso de estudio.
+
+## Estructura del proyecto
 
 ```text
 PAI5-RedTeamPro/
@@ -54,24 +65,26 @@ PAI5-RedTeamPro/
 
 ## Flujo de trabajo recomendado
 
-1. Completar `scope.md` antes de ejecutar cualquier prueba.
-2. Registrar el entorno atacante y objetivo en `evidencias/entorno/`.
-3. Ejecutar reconocimiento no destructivo con los scripts de `scripts/`.
-4. Registrar cada comando en `anexos/comandos_ejecutados.md`.
-5. Transferir resultados confirmados a `anexos/tabla_servicios.md` y `anexos/tabla_hallazgos.md`.
-6. Relacionar hallazgos con CVE, CVSS, CWE, NVD, CISA KEV y MITRE ATT&CK cuando proceda.
-7. Completar `informe/Informe_Tecnico_PAI5.md` con evidencias reales.
-8. Revisar que no haya datos inventados ni pruebas fuera de alcance.
+1. Completar `scope.md` con IP atacante, IP objetivo, red de laboratorio y autorizacion.
+2. Registrar versiones de herramientas y configuracion del laboratorio en `evidencias/entorno/`.
+3. Ejecutar reconocimiento no destructivo contra Kioptrix Level 1 dentro de la red host-only.
+4. Guardar salidas tecnicas en `evidencias/reconocimiento/`, `evidencias/nmap/` y `evidencias/nikto/`.
+5. Registrar cada comando en `anexos/comandos_ejecutados.md`.
+6. Completar `anexos/tabla_servicios.md` solo con servicios observados en evidencias reales.
+7. Analizar vulnerabilidades con CVE, NVD, CVSS, CWE, CISA KEV, Exploit-DB y SearchSploit.
+8. Mapear hallazgos a MITRE ATT&CK cuando exista justificacion.
+9. Completar `informe/Informe_Tecnico_PAI5.md` sin inventar resultados.
+10. Revisar anexos, capturas y evidencias antes de generar el ZIP final.
 
-## Gestion de evidencias
+## Evidencias
 
-Cada evidencia debe guardarse con una ruta trazable, fecha y responsable. Se recomienda:
+Cada evidencia debe ser trazable a un comando, fecha, responsable y objetivo. Se recomienda:
 
-- Guardar salidas de herramientas en texto plano cuando sea posible.
-- Mantener capturas en `evidencias/capturas/`.
-- Separar resultados por herramienta: `nmap/`, `nikto/`, `searchsploit/`.
-- Registrar la ruta exacta de cada evidencia en los anexos.
-- No modificar evidencias originales; si se necesita trabajar sobre ellas, crear una copia.
+- Guardar salidas de herramientas en texto plano.
+- Guardar capturas en `evidencias/capturas/`.
+- Separar resultados por herramienta o fase.
+- No modificar evidencias originales.
+- Referenciar rutas relativas en tablas y anexos.
 
 Formato recomendado:
 
@@ -79,17 +92,17 @@ Formato recomendado:
 evidencias/<categoria>/<timestamp>/<descripcion>.txt
 ```
 
-## Ejecucion de scripts de reconocimiento
+## Scripts disponibles
 
-Los scripts estan preparados para reconocimiento no destructivo y solo deben ejecutarse contra activos autorizados.
+Los scripts existentes estan limitados a reconocimiento y generacion de plantillas. No ejecutan explotacion, persistencia, evasion, DoS ni acciones destructivas.
 
-Reconocimiento de red con Nmap:
+Reconocimiento Nmap sobre IP autorizada:
 
 ```bash
 bash scripts/run_recon.sh <IP_OBJETIVO>
 ```
 
-Escaneo web basico con Nikto:
+Escaneo web basico con Nikto sobre URL/IP autorizada:
 
 ```bash
 bash scripts/run_web_scan.sh <URL_O_IP>
@@ -101,18 +114,17 @@ Generacion de plantilla CSV de hallazgos:
 python3 scripts/generate_findings_template.py
 ```
 
-[PENDIENTE: completar con IP atacante, IP objetivo y fecha de ejecucion real.]
-
 ## Contenido esperado del ZIP final
 
 El ZIP final debe incluir:
 
 - Documentacion base completada: `README.md`, `scope.md`, `metodologia.md`, `equipo.md`.
-- Informe tecnico completo en `informe/Informe_Tecnico_PAI5.md`.
+- Informe tecnico final en `informe/Informe_Tecnico_PAI5.md` y, si procede, PDF generado.
 - Evidencias reales organizadas por categoria.
-- Anexos actualizados con comandos, servicios, hallazgos y matriz de riesgos.
-- Scripts utilizados para reconocimiento.
+- Logs de comandos y capturas.
+- Tabla de servicios, tabla de hallazgos y matriz de riesgos.
+- Scripts usados durante el reconocimiento.
 - Configuraciones relevantes del laboratorio.
-- Capturas necesarias para justificar los resultados.
+- Justificacion de alcance, metodologia y restricciones.
 
-Antes de entregar, comprobar que todos los marcadores `[PENDIENTE: ...]` han sido completados o justificados.
+Antes de entregar, comprobar que los marcadores `[PENDIENTE: ...]` han sido completados o se mantienen justificados por ausencia de resultados reales.
