@@ -1,0 +1,10 @@
+# Nmap 7.98 scan initiated Mon May 11 05:55:38 2026 as: /usr/lib/nmap/nmap --privileged -sn -oN evidencias/reconocimiento/descubrimiento_red.txt 192.168.56.0/24
+Nmap scan report for piro-dvn-5-15.manten.us.es (192.168.56.100)
+Host is up (0.00029s latency).
+MAC Address: 08:00:27:87:F4:04 (Oracle VirtualBox virtual NIC)
+Nmap scan report for piro-dvn-6-1.manten.us.es (192.168.56.102)
+Host is up (0.0030s latency).
+MAC Address: 08:00:27:D0:82:25 (Oracle VirtualBox virtual NIC)
+Nmap scan report for piro-dvn-5-16.manten.us.es (192.168.56.101)
+Host is up.
+# Nmap done at Mon May 11 05:55:42 2026 -- 256 IP addresses (3 hosts up) scanned in 4.54 seconds

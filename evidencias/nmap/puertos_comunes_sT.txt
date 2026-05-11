@@ -1,0 +1,7 @@
+# Nmap 7.98 scan initiated Mon May 11 05:38:35 2026 as: /usr/lib/nmap/nmap --privileged -sT -Pn -T3 -oN evidencias/nmap/puertos_comunes_sT.txt 192.168.56.100
+Nmap scan report for piro-dvn-5-15.manten.us.es (192.168.56.100)
+Host is up (0.00031s latency).
+All 1000 scanned ports on piro-dvn-5-15.manten.us.es (192.168.56.100) are in ignored states.
+Not shown: 1000 filtered tcp ports (proto-unreach)
+
+# Nmap done at Mon May 11 05:38:35 2026 -- 1 IP address (1 host up) scanned in 0.08 seconds

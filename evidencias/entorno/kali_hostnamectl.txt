@@ -1,0 +1,15 @@
+ Static hostname: kali
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: fbe4d53065e747c0b8f32261072aac6a
+         Boot ID: 5987296bb81344de803d0de6866bd4dc
+  Virtualization: oracle
+Operating System: Kali GNU/Linux Rolling
+          Kernel: Linux 6.18.12+kali-amd64
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox
+Hardware Version: 1.2
+Firmware Version: VirtualBox
+   Firmware Date: Fri 2006-12-01
+    Firmware Age: 19y 5month 1w 2d

@@ -1,0 +1,14 @@
+# Nmap 7.98 scan initiated Mon May 11 05:57:13 2026 as: /usr/lib/nmap/nmap -sS -T3 -oN evidencias/nmap/puertos_comunes.txt 192.168.56.102
+Nmap scan report for piro-dvn-6-1.manten.us.es (192.168.56.102)
+Host is up (0.020s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+80/tcp    open  http
+111/tcp   open  rpcbind
+139/tcp   open  netbios-ssn
+443/tcp   open  https
+32768/tcp open  filenet-tms
+MAC Address: 08:00:27:D0:82:25 (Oracle VirtualBox virtual NIC)
+
+# Nmap done at Mon May 11 05:57:13 2026 -- 1 IP address (1 host up) scanned in 0.85 seconds
