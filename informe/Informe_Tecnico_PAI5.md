@@ -1,64 +1,117 @@
-# Informe Tecnico PAI5 - RedTeamPro
+# Informe Técnico PAI 5 - RedTeamPro
 
 ## Portada
 
-- Proyecto: RedTeamPro
-- Asignatura: Seguridad en Sistemas Informaticos e Internet
-- Tipo de evaluacion: Red Team / pentesting autorizado
-- Modalidad: Black Box
-- Organizacion evaluada: Ayuntamiento de Santa Marta
-- Sistema evaluado: Servidor de servicios digitales municipales
-- Sistema objetivo de laboratorio: Kioptrix Level 1
-- Entorno atacante: Kali Linux en maquina virtual
-- Red: Host-only / red interna aislada
-- Equipo: [PENDIENTE: completar]
-- Fecha: [PENDIENTE: completar]
-- Version del documento: 0.2
+- **Proyecto:** RedTeamPro
+- **Asignatura:** Seguridad en Sistemas Informáticos e Internet
+- **Tipo de evaluación:** Red Team / pentesting autorizado
+- **Modalidad:** Black Box
+- **Organización evaluada:** Ayuntamiento de Santa Marta
+- **Sistema evaluado:** Servidor de servicios digitales municipales
+- **Sistema objetivo de laboratorio:** Kioptrix Level 1
+- **Entorno atacante:** Kali Linux en máquina virtual
+- **Hipervisor:** Oracle VirtualBox
+- **Red:** Host-only / red interna aislada
+- **Equipo:** SCT-8
+- **Responsable del Rol 1:** Juan Cardesa
+- **Fecha:** 2026-05-11
+- **Versión del documento:** 0.3
+
+---
 
 ## Control de versiones
 
-| Version | Fecha | Responsable | Cambios |
+| Versión | Fecha | Responsable | Cambios |
 |---|---|---|---|
-| 0.1 | [PENDIENTE] | [PENDIENTE] | Plantilla inicial |
-| 0.2 | [PENDIENTE] | [PENDIENTE] | Adaptacion al caso Ayuntamiento de Santa Marta / Kioptrix Level 1 |
+| 0.1 | 2026-05-08 | Juan Cardesa | Plantilla inicial del informe |
+| 0.2 | 2026-05-09 | Juan Cardesa | Adaptación al caso Ayuntamiento de Santa Marta / Kioptrix Level 1 |
+| 0.3 | 2026-05-11 | Juan Cardesa | Actualización de alcance, entorno, reconocimiento, fingerprinting, servicios identificados y evidencias del Rol 1 |
+
+---
 
 ## Resumen ejecutivo
 
-Este informe documenta una evaluacion academica Red Team / pentesting autorizado sobre una organizacion publica ficticia, el Ayuntamiento de Santa Marta. El sistema evaluado representa un servidor de servicios digitales municipales desplegado en laboratorio mediante Kioptrix Level 1.
+Este informe documenta una evaluación académica de seguridad tipo **Red Team / pentesting autorizado** sobre una organización pública ficticia, el **Ayuntamiento de Santa Marta**. El sistema evaluado representa un servidor de servicios digitales municipales desplegado en un laboratorio controlado mediante la máquina vulnerable **Kioptrix Level 1**.
 
-La evaluacion se plantea con enfoque Black Box, usando Kali Linux como maquina atacante y una red host-only / interna aislada para garantizar que no se afectan sistemas externos.
+La evaluación se plantea con enfoque **Black Box**, por lo que el equipo actúa como un atacante externo autorizado, sin conocimiento interno previo del sistema objetivo. El entorno de pruebas se ha desplegado mediante **Oracle VirtualBox**, utilizando **Kali Linux** como máquina atacante y una red **Host-only** aislada para garantizar que no se afectan sistemas externos ni servicios reales.
 
-[PENDIENTE: completar con resultados reales, riesgo global y principales recomendaciones cuando finalicen las pruebas.]
+Durante la fase inicial de planificación y reconocimiento se ha identificado el objetivo definitivo en la dirección `192.168.56.102`, dentro de la red de laboratorio `192.168.56.0/24`. El escaneo de puertos y versiones ha permitido acotar la superficie TCP expuesta a seis servicios principales: SSH, HTTP, rpcbind, NetBIOS/SMB, HTTPS y status/RPC.
 
-## Alcance y autorizacion
+Los resultados obtenidos en esta fase no constituyen todavía vulnerabilidades explotadas, sino una base técnica para que la fase posterior analice CVE, CVSS, CWE, CISA KEV, Exploit-DB, SearchSploit y posibles técnicas MITRE ATT&CK asociadas.
 
-La evaluacion se limita a Kioptrix Level 1 dentro de una red local aislada. El equipo actuara como atacante externo autorizado, sin informacion interna previa del sistema objetivo.
+[PENDIENTE: completar con riesgo global, hallazgos confirmados y principales recomendaciones cuando finalicen las fases de análisis, explotación controlada y mitigación.]
 
-Dentro del alcance:
+---
+
+## Alcance y autorización
+
+La evaluación se limita exclusivamente a la máquina vulnerable **Kioptrix Level 1**, desplegada dentro de una red local aislada. El equipo actuará como atacante externo autorizado, sin información interna previa del sistema objetivo.
+
+El laboratorio se ha configurado para trabajar únicamente sobre activos propios y controlados. No se evaluará ningún ayuntamiento real, dominio público, dirección IP externa, infraestructura universitaria real ni servicio de terceros.
+
+### Dentro del alcance
 
 - Reconocimiento de red local.
-- Fingerprinting.
-- Escaneo de puertos.
-- Deteccion de servicios y versiones.
-- Analisis de vulnerabilidades.
-- Relacion con CVE, NVD, CVSS, CWE, CISA KEV y MITRE ATT&CK.
-- Explotacion controlada y escalada solo si procede y dentro del laboratorio.
+- Identificación de la IP objetivo.
+- Fingerprinting del sistema objetivo.
+- Escaneo de puertos TCP.
+- Detección de servicios y versiones.
+- Detección aproximada del sistema operativo.
+- Análisis de vulnerabilidades.
+- Búsqueda de CVE, NVD, CVSS y CWE.
+- Consulta de CISA KEV, Exploit-DB y SearchSploit.
+- Relación de hallazgos con MITRE ATT&CK cuando proceda.
+- Escaneo web básico si procede.
+- Explotación controlada únicamente dentro del laboratorio.
+- Escalada de privilegios controlada, si procede.
+- Post-explotación limitada a evidenciar impacto técnico.
 - Registro de evidencias, logs y capturas.
+- Redacción de informe técnico y plan de mitigación.
 
-Fuera del alcance:
+### Fuera del alcance
 
-- Sistemas externos, IP publicas y servicios reales de terceros.
-- DoS, malware, persistencia, evasion y tecnicas destructivas.
-- Exfiltracion real de informacion sensible.
-- Modificacion innecesaria de datos.
+- Sistemas externos.
+- Direcciones IP públicas.
+- Servicios reales de terceros.
+- Dominios de Internet.
+- Ataques de denegación de servicio.
+- Malware.
+- Persistencia maliciosa.
+- Evasión de defensas.
+- Técnicas destructivas.
+- Exfiltración real de información sensible.
+- Modificación innecesaria de datos.
+- Movimiento lateral fuera de Kioptrix Level 1.
+- Ataques contra la máquina anfitriona Windows.
+- Ataques contra otros equipos conectados a la red física del usuario.
 
-[PENDIENTE: completar IP atacante, IP objetivo, rango de red y declaracion de autorizacion.]
+### Entorno autorizado confirmado
 
-## Organizacion evaluada
+| Elemento | Valor |
+|---|---|
+| Hipervisor | Oracle VirtualBox |
+| Máquina atacante | Kali Linux |
+| IP atacante NAT | `10.0.2.15/24` |
+| IP atacante Host-only | `192.168.56.101/24` |
+| Interfaz de laboratorio | `eth1` |
+| Máquina objetivo | Kioptrix Level 1 |
+| IP objetivo definitiva | `192.168.56.102` |
+| MAC objetivo | `08:00:27:D0:82:25` |
+| Red de laboratorio | `192.168.56.0/24` |
+| Tipo de red | Host-only / red interna aislada |
+| Modalidad | Black Box |
 
-El Ayuntamiento de Santa Marta es una organizacion publica ficticia creada para contextualizar el ejercicio. El activo evaluado se presenta como un servidor de servicios digitales municipales.
+---
 
-No existe relacion con una entidad real ni se evaluara infraestructura publica real.
+## Organización evaluada
+
+El **Ayuntamiento de Santa Marta** es una organización pública ficticia creada exclusivamente para contextualizar el ejercicio académico. El activo evaluado se presenta como un servidor de servicios digitales municipales, potencialmente empleado para prestar servicios web, acceso remoto o servicios auxiliares vinculados a la administración digital.
+
+Esta contextualización permite interpretar los resultados técnicos en términos de impacto sobre una organización pública: disponibilidad de servicios digitales, confidencialidad de información, integridad de sistemas y riesgo reputacional.
+
+No existe relación con una entidad real ni se evalúa infraestructura pública real.
+
+---
 
 ## Sistema objetivo
 
@@ -66,169 +119,120 @@ No existe relacion con una entidad real ni se evaluara infraestructura publica r
 |---|---|
 | Sistema objetivo | Kioptrix Level 1 |
 | Fuente | VulnHub / Kioptrix |
-| Representacion en el caso | Servidor de servicios digitales municipales |
-| Motivo de eleccion | Permite un ciclo completo de reconocimiento, analisis, explotacion controlada, posible escalada y reporting |
+| Representación en el caso | Servidor de servicios digitales municipales |
+| IP definitiva | `192.168.56.102` |
+| MAC | `08:00:27:D0:82:25` |
+| Sistema operativo estimado | Linux 2.4.X |
+| Detalle estimado por Nmap | Linux 2.4.9 - 2.4.18 |
+| Distancia de red | 1 salto |
+| Motivo de elección | Permite un ciclo completo de reconocimiento, análisis, explotación controlada, posible escalada y reporting |
 | Diferencia con caso de estudio | Se selecciona Kioptrix Level 1 en lugar de Metasploitable3 |
 
-[PENDIENTE: completar detalles tecnicos observados tras reconocimiento.]
+Se ha seleccionado **Kioptrix Level 1** por tratarse de una máquina vulnerable de laboratorio diseñada para prácticas de evaluación de seguridad. Su uso permite desarrollar un ciclo completo de evaluación en un entorno controlado, reproducible y diferente al sistema utilizado en el caso de estudio, donde se emplea Metasploitable3.
 
-## Metodologia
+Durante la fase inicial de descubrimiento se detectó `192.168.56.100` como primer candidato a objetivo. Sin embargo, los resultados de escaneo no fueron coherentes con Kioptrix Level 1. Tras revisar la configuración de red de VirtualBox y repetir el descubrimiento, se identificó `192.168.56.102` como sistema objetivo definitivo.
 
-La metodologia principal sera NIST SP 800-115, estructurada en planificacion, ejecucion y post-ejecucion/reporting.
+---
 
-Fases aplicadas:
+## Metodología
 
-1. Planificacion.
+La metodología principal empleada es **NIST SP 800-115**, estructurada en tres grandes bloques:
+
+1. **Planificación**
+2. **Ejecución**
+3. **Post-ejecución / reporting**
+
+En el contexto del PAI 5, esta metodología se concreta en las siguientes fases:
+
+1. Planificación.
 2. Reconocimiento / fingerprinting.
-3. Identificacion de servicios.
-4. Analisis de vulnerabilidades.
-5. Explotacion controlada.
+3. Identificación de servicios.
+4. Análisis de vulnerabilidades.
+5. Explotación controlada.
 6. Escalada de privilegios.
-7. Post-explotacion.
+7. Post-explotación.
 8. Reporting.
-9. Plan de mitigacion.
+9. Plan de mitigación.
 
-MITRE ATT&CK se usara para relacionar hallazgos con tacticas y tecnicas reales de adversarios. CVE, NVD, CVSS y CWE se usaran para identificar, clasificar y puntuar vulnerabilidades. CISA KEV se usara para priorizar vulnerabilidades explotadas en el mundo real cuando proceda.
+Durante la fase de planificación se define el alcance, la organización ficticia, el sistema objetivo, la red de laboratorio, los roles del equipo y las restricciones legales y técnicas. Durante la fase de ejecución se realizan tareas de descubrimiento, fingerprinting, identificación de servicios, análisis de vulnerabilidades y validación controlada de hallazgos. Finalmente, en la fase de post-ejecución se documentan resultados, evidencias, riesgos, impacto y recomendaciones.
+
+### Uso de MITRE ATT&CK
+
+MITRE ATT&CK se utilizará para relacionar hallazgos con tácticas y técnicas reales de adversarios. Esta relación se realizará únicamente cuando exista una justificación técnica basada en evidencias reales.
+
+### Uso de CVE, NVD, CVSS y CWE
+
+Las vulnerabilidades identificadas se documentarán, cuando proceda, mediante:
+
+- **CVE**, como identificador público de vulnerabilidad.
+- **NVD**, como fuente técnica de referencia.
+- **CVSS**, como estimación de severidad técnica.
+- **CWE**, como clasificación de la debilidad subyacente.
+
+### Uso de CISA KEV
+
+CISA KEV se utilizará como fuente de priorización adicional cuando una vulnerabilidad detectada esté catalogada como explotada activamente en el mundo real.
+
+---
 
 ## Entorno de trabajo
 
+La evaluación se ha realizado sobre un laboratorio local virtualizado mediante **Oracle VirtualBox**, compuesto por una máquina atacante **Kali Linux** y una máquina objetivo **Kioptrix Level 1**. Ambas máquinas se han configurado dentro de una red **Host-only**, permitiendo la comunicación entre atacante y objetivo sin exposición directa a sistemas externos.
+
+La máquina atacante dispone también de una interfaz NAT para conectividad propia, pero las pruebas sobre el sistema objetivo se realizan exclusivamente a través de la interfaz Host-only del laboratorio.
+
 | Elemento | Valor |
 |---|---|
-| Maquina atacante | Kali Linux en maquina virtual |
-| IP atacante | [PENDIENTE: completar con resultado real] |
-| Maquina objetivo | Kioptrix Level 1 |
-| IP objetivo | [PENDIENTE: completar con resultado real] |
+| Hipervisor | Oracle VirtualBox |
+| Máquina atacante | Kali Linux en máquina virtual |
+| Sistema atacante | Kali GNU/Linux Rolling |
+| Kernel atacante | Linux 6.18.12+kali-amd64 |
+| Arquitectura atacante | x86_64 |
+| IP NAT atacante | `10.0.2.15/24` |
+| IP Host-only atacante | `192.168.56.101/24` |
+| Interfaz Host-only | `eth1` |
+| Máquina objetivo | Kioptrix Level 1 |
+| IP objetivo | `192.168.56.102` |
+| MAC objetivo | `08:00:27:D0:82:25` |
+| Rango de laboratorio | `192.168.56.0/24` |
 | Tipo de red | Host-only / red interna aislada |
-| Herramientas de reconocimiento | `ip`, `ping`, `nmap` |
+| Herramientas de reconocimiento | `ip`, `ping`, `arp`, `nmap` |
 | Herramientas de fingerprinting | `nmap -O`, `nmap -sV`, `nmap -sC` |
-| Herramientas de analisis | SearchSploit, Exploit-DB, NVD/CVE, Nikto si hay servicio web |
-| Herramientas de explotacion controlada | Metasploit o PoC controladas si procede |
-| Herramientas de escalada | LinPEAS si procede |
+| Herramientas de análisis previstas | SearchSploit, Exploit-DB, NVD/CVE, Nikto si procede |
+| Herramientas de explotación controlada previstas | Metasploit o PoC controladas si procede |
+| Herramientas de escalada previstas | LinPEAS si procede |
 
-[PENDIENTE: completar versiones reales de herramientas y evidencias en `evidencias/entorno/`.]
+Las evidencias del entorno se almacenan en `evidencias/entorno/`, mientras que las evidencias de reconocimiento y Nmap se conservan en `evidencias/reconocimiento/` y `evidencias/nmap/`.
 
-## Planificacion de la evaluacion
+---
 
-Durante la fase de planificacion se define el alcance, la organizacion ficticia, el objetivo de laboratorio, la red aislada, los roles del equipo y las restricciones tecnicas y eticas.
+## Planificación de la evaluación
 
-El uso de Kioptrix Level 1 se justifica porque permite documentar el ciclo completo de evaluacion en un entorno controlado y diferente a Metasploitable3, usado como referencia en el caso de estudio.
+Durante la fase de planificación se han definido los siguientes elementos:
 
-[PENDIENTE: completar calendario, integrantes reales y autorizacion.]
+- Organización ficticia evaluada: Ayuntamiento de Santa Marta.
+- Sistema simulado: servidor de servicios digitales municipales.
+- Sistema objetivo de laboratorio: Kioptrix Level 1.
+- Entorno atacante: Kali Linux.
+- Hipervisor: Oracle VirtualBox.
+- Tipo de red: Host-only / red interna aislada.
+- Modalidad: Black Box.
+- Responsable de planificación y reconocimiento: Juan Cardesa.
+- Evidencias a conservar: salidas de comandos, logs, capturas y tablas técnicas.
+
+La decisión de utilizar Kioptrix Level 1 se justifica porque permite desarrollar el ciclo completo de evaluación en un entorno preparado para prácticas de seguridad. Además, cumple la condición de seleccionar un objetivo distinto al utilizado como ejemplo en el caso de estudio, donde se emplea Metasploitable3.
+
+[PENDIENTE: completar calendario final e integrantes reales del equipo.]
+
+---
 
 ## Reconocimiento y fingerprinting
 
-El reconocimiento tendra como finalidad identificar la IP del objetivo, comprobar disponibilidad, descubrir puertos y obtener informacion de servicios y versiones.
+La fase de reconocimiento tuvo como objetivo identificar los hosts activos en la red de laboratorio, determinar la IP definitiva del sistema objetivo, comprobar conectividad, descubrir puertos abiertos y obtener información inicial sobre servicios, versiones y sistema operativo.
 
-Evidencias previstas:
+### Descubrimiento de red
 
-- `evidencias/entorno/`
-- `evidencias/reconocimiento/`
-- `evidencias/nmap/`
-- `evidencias/nikto/` si existe servicio web.
+El segmento Host-only utilizado fue:
 
-Comandos previstos:
-
-- `ip`
-- `ping`
-- `nmap -sn`
-- `nmap --top-ports`
-- `nmap -sV`
-- `nmap -O`
-
-[PENDIENTE: completar con resultados reales.]
-
-## Identificacion de servicios
-
-Los servicios detectados se documentaran en `anexos/tabla_servicios.md`, indicando puerto, protocolo, servicio, version, estado, evidencia y observaciones.
-
-No se indicara que un servicio es vulnerable sin analisis y evidencia posterior.
-
-[PENDIENTE: completar con servicios reales identificados.]
-
-## Analisis de vulnerabilidades
-
-El analisis de vulnerabilidades se realizara a partir de servicios y versiones reales observadas. Se consultaran SearchSploit, Exploit-DB, NVD/CVE, CVSS, CWE y CISA KEV.
-
-Los hallazgos candidatos o confirmados se documentaran en `anexos/tabla_hallazgos.md`.
-
-[PENDIENTE: completar con hallazgos reales.]
-
-## Relacion con CVE/CVSS/CWE
-
-Cada hallazgo confirmado se relacionara con:
-
-- CVE, si existe identificador publico aplicable.
-- CVSS, como referencia de severidad tecnica.
-- CWE, como clasificacion de la debilidad subyacente.
-- NVD, como fuente tecnica de apoyo.
-
-[PENDIENTE: completar por hallazgo real.]
-
-## Relacion con MITRE ATT&CK
-
-MITRE ATT&CK se usara para mapear tacticas y tecnicas solo cuando exista una relacion justificable con la evidencia observada.
-
-Tabla preliminar de referencia:
-
-| Servicio | Posible tactica MITRE | Posible tecnica | Motivo | Estado |
-|---|---|---|---|---|
-| SSH | Credential Access / Initial Access | Brute Force / Valid Accounts, si procede | Servicio de acceso remoto | Pendiente de validacion |
-| HTTP | Initial Access | Exploit Public-Facing Application, si procede | Aplicacion o servicio web expuesto | Pendiente de validacion |
-| SMB | Discovery / Lateral Movement | Remote Services, si procede | Servicio de comparticion remoto | Pendiente de validacion |
-| FTP | Initial Access | Exploit Public-Facing Application / Valid Accounts, si procede | Servicio remoto expuesto | Pendiente de validacion |
-
-[PENDIENTE: ajustar la tabla a servicios reales.]
-
-## Explotacion controlada
-
-La explotacion controlada, si procede, se realizara unicamente contra Kioptrix Level 1 dentro de la red host-only / interna aislada.
-
-Restricciones:
-
-- No DoS.
-- No malware.
-- No persistencia.
-- No evasion.
-- No exfiltracion real.
-- No acciones destructivas.
-
-[PENDIENTE: completar solo con pruebas reales autorizadas.]
-
-## Escalada de privilegios
-
-La escalada de privilegios se evaluara solo si se obtiene acceso dentro de una prueba controlada y autorizada. Cualquier uso de herramientas como LinPEAS debera registrarse y justificarse.
-
-[PENDIENTE: completar si aplica.]
-
-## Post-explotacion
-
-La post-explotacion se limitara a evidenciar impacto tecnico minimo, sin mantener acceso, sin exfiltrar informacion sensible y sin modificar datos innecesariamente.
-
-[PENDIENTE: completar si aplica.]
-
-## Evaluacion global del riesgo
-
-El riesgo global se estimara combinando probabilidad, impacto, CVSS, exposicion, explotabilidad y prioridad de correccion. La matriz de referencia esta en `anexos/matriz_riesgos.md`.
-
-[PENDIENTE: completar con resultados reales.]
-
-## Plan de mitigacion
-
-Las mitigaciones se redactaran por hallazgo confirmado e incluiran prioridad, accion recomendada y justificacion tecnica.
-
-[PENDIENTE: completar con mitigaciones reales.]
-
-## Conclusiones
-
-[PENDIENTE: completar con conclusiones finales basadas exclusivamente en resultados reales.]
-
-## Anexos
-
-- `anexos/comandos_ejecutados.md`
-- `anexos/tabla_servicios.md`
-- `anexos/tabla_hallazgos.md`
-- `anexos/matriz_riesgos.md`
-- Evidencias en `evidencias/`
-- Capturas en `evidencias/capturas/`
-
-[PENDIENTE: verificar anexos antes de la entrega.]
+```text
+192.168.56.0/24

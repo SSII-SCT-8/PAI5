@@ -1,0 +1,3 @@
+Con el objetivo de confirmar la superficie de exposición TCP del sistema objetivo, se ejecutó un escaneo completo de puertos mediante `nmap -p-`. El resultado confirmó que los únicos puertos TCP abiertos en `192.168.56.102` son `22`, `80`, `111`, `139`, `443` y `32768`. No se identificaron puertos TCP adicionales abiertos.
+
+Este resultado permite acotar la fase posterior de análisis de vulnerabilidades a los servicios SSH, HTTP/HTTPS, RPC y NetBIOS/SMB, reduciendo la superficie de análisis y facilitando la priorización técnica para el Rol 2.
