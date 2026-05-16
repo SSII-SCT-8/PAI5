@@ -6,6 +6,7 @@
 - **Asignatura:** Seguridad en Sistemas Informáticos e Internet
 - **Equipo:** SCT-8
 - **Responsable del Rol 1:** Juan Cardesa
+- **Responsable del Rol 2:** Diego Manzanos
 
 ---
 
