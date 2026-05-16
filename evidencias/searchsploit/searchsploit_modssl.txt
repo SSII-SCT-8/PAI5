@@ -1,0 +1,9 @@
+------------------------------------------- ---------------------------------
+ Exploit Title                             |  Path
+------------------------------------------- ---------------------------------
+Apache [01;31m[Kmod_ssl[m[K [01;31m[K2.8[m[K.x - Off-by-One HTAccess | multiple/dos/21575.txt
+Apache [01;31m[Kmod_ssl[m[K < [01;31m[K2.8[m[K.7 OpenSSL - 'OpenFuck | unix/remote/21671.c
+Apache [01;31m[Kmod_ssl[m[K < [01;31m[K2.8[m[K.7 OpenSSL - 'OpenFuck | unix/remote/47080.c
+Apache [01;31m[Kmod_ssl[m[K < [01;31m[K2.8[m[K.7 OpenSSL - 'OpenFuck | unix/remote/764.c
+------------------------------------------- ---------------------------------
+Shellcodes: No Results

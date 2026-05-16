@@ -1,0 +1,24 @@
+------------------------------------------- ---------------------------------
+ Exploit Title                             |  Path
+------------------------------------------- ---------------------------------
+[01;31m[KSamba[m[K 2.0.x/[01;31m[K2.2[m[K - Arbitrary File Creation  | unix/remote/20968.txt
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.0 < [01;31m[K2.2[m[K.8 (OSX) - trans2open Ove | osx/remote/9924.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.2 < [01;31m[K2.2[m[K.6 - 'nttrans' Remote Buf | linux/remote/16321.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.8 (BSD x86) - 'trans2open' Remot | bsd_x86/remote/16880.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.8 (Linux Kernel 2.6 / Debian / M | linux/local/23674.txt
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.8 (Linux x86) - 'trans2open' Rem | linux_x86/remote/16861.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.8 (OSX/PPC) - 'trans2open' Remot | osx_ppc/remote/16876.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.8 (Solaris SPARC) - 'trans2open' | solaris_sparc/remote/16330.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.8 - Brute Force Method Remote Co | linux/remote/55.c
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - 'call_trans2open' Remote Buf | unix/remote/22468.c
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - 'call_trans2open' Remote Buf | unix/remote/22469.c
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - 'call_trans2open' Remote Buf | unix/remote/22470.c
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - 'call_trans2open' Remote Buf | unix/remote/22471.txt
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - 'nttrans' Remote Overflow (M | linux/remote/9936.rb
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - CIFS/9000 Server A.01.x Pack | unix/remote/22356.c
+[01;31m[KSamba[m[K [01;31m[K2.2[m[K.x - Remote Buffer Overflow       | linux/remote/7.pl
+[01;31m[KSamba[m[K < [01;31m[K2.2[m[K.8 (Linux/BSD) - Remote Code Ex | multiple/remote/10.c
+[01;31m[KSamba[m[K < 3.0.20 - Remote Heap Overflow      | linux/remote/7701.txt
+[01;31m[KSamba[m[K < 3.6.2 (x86) - Denial of Service (P | linux_x86/dos/36741.py
+------------------------------------------- ---------------------------------
+Shellcodes: No Results

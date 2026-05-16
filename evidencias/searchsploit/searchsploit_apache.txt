@@ -1,0 +1,29 @@
+------------------------------------------- ---------------------------------
+ Exploit Title                             |  Path
+------------------------------------------- ---------------------------------
+[01;31m[KApache[m[K + PHP < 5.3.12 / < 5.4.2 - cgi-bin  | php/remote/29290.c
+[01;31m[KApache[m[K + PHP < 5.3.12 / < 5.4.2 - Remote C | php/remote/29316.py
+[01;31m[KApache[m[K [01;31m[K1.3.20[m[K (Win32) - 'PHP.exe' Remote F | windows/remote/21204.txt
+[01;31m[KApache[m[K 1.3.6/1.3.9/1.3.11/1.3.12/[01;31m[K1.3.20[m[K -  | windows/remote/19975.pl
+[01;31m[KApache[m[K 1.3.x < 2.0.48 mod_userdir - Remote | linux/remote/132.c
+[01;31m[KApache[m[K < 1.3.37/2.0.59/2.2.3 mod_rewrite - | multiple/remote/2237.sh
+[01;31m[KApache[m[K < 2.0.64 / < 2.2.21 mod_setenvif -  | linux/dos/41769.txt
+[01;31m[KApache[m[K < 2.2.34 / < 2.4.27 - OPTIONS Memor | linux/webapps/42745.py
+[01;31m[KApache[m[K CouchDB < 2.1.0 - Remote Code Execu | linux/webapps/44913.py
+[01;31m[KApache[m[K CXF < 2.5.10/2.6.7/2.7.4 - Denial o | multiple/dos/26710.txt
+[01;31m[KApache[m[K mod_ssl < 2.8.7 OpenSSL - 'OpenFuck | unix/remote/21671.c
+[01;31m[KApache[m[K mod_ssl < 2.8.7 OpenSSL - 'OpenFuck | unix/remote/47080.c
+[01;31m[KApache[m[K mod_ssl < 2.8.7 OpenSSL - 'OpenFuck | unix/remote/764.c
+[01;31m[KApache[m[K Struts < 1.3.10 / < 2.3.16.2 - Clas | multiple/remote/41690.rb
+[01;31m[KApache[m[K Struts < 2.2.0 - Remote Command Exe | multiple/remote/17691.rb
+[01;31m[KApache[m[K Tika-server < 1.18 - Command Inject | windows/remote/46540.py
+[01;31m[KApache[m[K Tomcat < 5.5.17 - Remote Directory  | multiple/remote/2061.txt
+[01;31m[KApache[m[K Tomcat < 6.0.18 - 'utf8' Directory  | multiple/remote/6229.txt
+[01;31m[KApache[m[K Tomcat < 6.0.18 - 'utf8' Directory  | unix/remote/14489.c
+[01;31m[KApache[m[K Tomcat < 9.0.1 (Beta) / < 8.5.23 /  | jsp/webapps/42966.py
+[01;31m[KApache[m[K Tomcat < 9.0.1 (Beta) / < 8.5.23 /  | windows/webapps/42953.txt
+[01;31m[KApache[m[K Xerces-C XML Parser < 3.1.2 - Denia | linux/dos/36906.txt
+Oracle Java JDK/JRE < 1.8.0.131 / [01;31m[KApache[m[K X | php/dos/44057.md
+Webfroot Shoutbox < 2.32 ([01;31m[KApache[m[K) - Local  | linux/remote/34.pl
+------------------------------------------- ---------------------------------
+Shellcodes: No Results

